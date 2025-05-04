@@ -1,0 +1,21 @@
+Expense Tracker step-by-step:
+	1. Modells, Forms, View, Urls
+	2. CRUD logic
+	3. Auth logic
+	4. Design
+
+Expense Tracker features:
+	1. Login / Register Page
+	
+	2. Main page - month selector
+				 - Create a new month
+				 
+	3. Month page - input salary 
+				  - input expenses 
+				  - list expenses 
+				  - update expenses 
+				  - delete expenses 
+				  - list expenses by categories 
+				  - view how "strong the month is by color" 
+				  
+	4. Expense form - input expenses - categorization
