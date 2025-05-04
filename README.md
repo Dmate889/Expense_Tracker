@@ -1,0 +1,1 @@
+# Django_classic_projects
