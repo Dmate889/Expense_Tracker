@@ -1,1 +1,1 @@
-# Django_classic_projects
+# Expense Tracker - django mini project
