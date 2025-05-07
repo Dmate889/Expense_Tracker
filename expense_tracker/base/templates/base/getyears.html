@@ -1,0 +1,15 @@
+{% extends "base/base.html" %} {% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static 'base/getyears.css' %}" />
+{% endblock styles %} {% block content %}
+<div class="title_years">
+    <h1>The list of years</h1>
+</div>
+<div class="years">
+  {% for year in years %}
+  <a href="{% url 'getmonths' %}">
+      <button>{{year}}</button>
+  </a>
+  {% endfor %}
+</div>
+
+{% endblock content %}

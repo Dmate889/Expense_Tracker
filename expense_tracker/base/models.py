@@ -9,6 +9,9 @@ class Year(models.Model):
     year = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return str(self.year)
+
 class Months(models.Model):
     MONTH_CHOICES = [
         ("jan", "January"),
