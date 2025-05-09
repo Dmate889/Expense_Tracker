@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'base/monthexpense.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="centerColumn">
+    <div class="monthData">
+      <h1>{{month}}</h1>
+      <h5>{{ budget.created_at|date:"Y-m-d" }}</h5>
+    </div>
+    <div class="amountContainer">
+      <div class="amount">
+        {{budget.amount|floatformat:0}} HUF
+      </div>
+    </div>
+    <div class="expenseButtons">
+      <button>Deduct</button>
+      <button>Add</button>
+    </div>
+    <a href="{{request.META.HTTP_REFERER}}">
+        <button>back</button>
+    </a>
+  </div>
+{% endblock content %}

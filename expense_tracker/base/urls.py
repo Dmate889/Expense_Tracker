@@ -5,5 +5,6 @@ from . import views
 urlpatterns = [
     path("", views.home, name = "home"),
     path("getyears/", views.getYears, name="getyears"),
-    path("getmonths/", views.getMonths, name="getmonths")
+    path("getmonths/", views.getMonths, name="getmonths"),
+    path('monthexpense/<int:month_id>', views.monthExpense, name="monthexpense"),
 ]

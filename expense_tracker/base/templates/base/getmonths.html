@@ -6,7 +6,9 @@
 </div>
 <div class="months">
   {% for month in months %}
-  <button>{{month}}</button>
+  <a href="{% url 'monthexpense' month.id %}">
+    <button>{{month}}</button>
+  </a>
   {% endfor %}
 </div>
 

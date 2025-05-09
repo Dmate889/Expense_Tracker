@@ -1,0 +1,51 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    min-height: 100vh;
+}
+
+.centerColumn {
+    display: grid;
+    grid-column: 2;
+    grid-template-rows: auto auto auto auto;
+    justify-items: center;
+    align-items: start;
+    gap: 50px;
+    padding-top: 50px;
+}
+
+.monthData {
+    font-size: 30px;
+    text-align: center;
+}
+
+.amountContainer {
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.amount {
+    font-size: 50px;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 2px 2px 20px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+    height: 70px;
+}
+
+.expenseButtons {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
