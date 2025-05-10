@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Months, Year, Budget
+from .forms import YearForm, MonthsForm
 
 # Create your views here.
 
@@ -12,6 +13,18 @@ def getYears(request):
     
     context = {'years': years}
     return render(request, 'base/getyears.html', context)
+
+def createNewYear(request):
+    form = YearForm()
+    if request.method == "POST":
+        form = YearForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("getyears")
+
+    context = {"form": form}
+    
+    return render(request, 'base/createyear.html', context)
 
 
 def getMonths(request):

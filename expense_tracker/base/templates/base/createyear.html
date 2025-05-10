@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'base/createyear.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<h1>Add a new year and hit Enter</h1>
+<form method="POST">
+  {% csrf_token %}
+  <div class="formGroup">
+      {{ form.year }}
+      <!-- {{form.user}} -->
+      <button type="submit">Submit</button>
+    </div>
+</form>
+<a href="{% url 'home' %}">
+    <button>Back</button>
+</a>
+
+
+{% endblock content %}
