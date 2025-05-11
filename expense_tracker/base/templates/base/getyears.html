@@ -1,16 +1,22 @@
 {% extends "base/base.html" %} {% load static %} {% block styles %}
-<link rel="stylesheet" href="{% static 'base/getyears_v2.css' %}" />
+<link rel="stylesheet" href="{% static 'base/getyears_v3.css' %}" />
 {% endblock styles %} {% block content %}
 <div class="title_years">
     <h1>The list of years</h1>
 </div>
+{% if years %}
 <div class="years">
-  {% for year in years %}
-  <a href="{% url 'getmonths' %}">
-      <button>{{year}}</button>
-  </a>
-  {% endfor %}
-</div>
+    {% for year in years %}
+      <a href="{% url 'getmonths' %}" class="yearItem">
+          <button>{{ year }}</button>
+      </a>
+    {% endfor %}
+  </div>
+  {% else %}
+    <div class="zeroItems">
+      <p>You don't have any years created yet.</p>
+    </div>
+  {% endif %}
 <div class="backButton">
   <a href="{% url 'home' %}">
     <button>Back</button>

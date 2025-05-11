@@ -1,0 +1,38 @@
+body {
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    min-height: 100vh;  
+}
+.title_months{
+    justify-self: center;
+    align-self: center;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    box-shadow: 2px 2px 10px black;
+    border-radius: 40px;
+}
+
+.months{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    padding: 50px;
+    justify-content: center;
+    gap: 20px;
+}
+
+.backButton{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-self: center;
+    gap: 20px;
+}
+
+.zeroItems{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}

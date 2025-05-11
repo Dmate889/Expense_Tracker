@@ -26,6 +26,18 @@ def createNewYear(request):
     
     return render(request, 'base/createyear.html', context)
 
+def createMonth(request):
+    form = MonthsForm()
+    if request.method == "POST":
+        form = MonthsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("getmonths")
+
+    context = {"form": form}
+    
+    return render(request, 'base/createmonth.html', context)
+
 
 def getMonths(request):
     months = Months.objects.all()

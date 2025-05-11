@@ -31,7 +31,7 @@ class Months(models.Model):
     name = models.CharField(max_length=3, choices=MONTH_CHOICES)
 
 
-    year = models.OneToOneField(Year, related_name='months', blank=True, on_delete= models.CASCADE)
+    year = models.ForeignKey(Year, on_delete= models.CASCADE)
 
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 

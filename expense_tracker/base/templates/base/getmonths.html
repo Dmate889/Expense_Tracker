@@ -1,12 +1,13 @@
 {% extends "base/base.html" %}
 {% load static %} 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'base/getmonths_v2.css' %}" />
+<link rel="stylesheet" href="{% static 'base/getmonths_v4.css' %}" />
 {% endblock styles %} 
 {% block content %}
 <div class="title_months">
     <h1>The list of months</h1>
 </div>
+{% if months %}
 <div class="months">
   {% for month in months %}
   <a href="{% url 'monthexpense' month.id %}">
@@ -14,9 +15,17 @@
   </a>
   {% endfor %}
 </div>
+{% else %}
+<div class="zeroItems">
+  <p>You don't have any months created for the year.</p>
+</div>
+{% endif %}
 <div class="backButton">
   <a href="{% url 'getyears' %}">
     <button>Back</button>
+  </a>
+  <a href="{% url 'createmonth' %}">
+    <button>Create Month</button>
   </a>
 </div>
 

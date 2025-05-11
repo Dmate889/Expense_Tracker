@@ -2,23 +2,29 @@
 {% load static %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'base/createyear.css' %}">
+    <link rel="stylesheet" href="{% static 'base/createmonth.css' %}">
 {% endblock styles %}
 
 {% block content %}
+
 <h1>Add a new year</h1>
 <form method="POST">
   {% csrf_token %}
   <div class="formGroup">
-      {{ form.year }}
+            {{ form.name }}
       <!-- Just for testing purposes, later on it will be the session user -->
-      {{form.user}}
+      {{form.created_by}}
+      {{form.year}}
       <button type="submit">Submit</button>
     </div>
 </form>
-<a href="{% url 'home' %}">
-    <button>Back</button>
-</a>
+<div class="backButton">
+    <a href="{% url 'home' %}">
+        <button>Back</button>
+    </a>
+</div>
+
+</div>
 
 
 {% endblock content %}

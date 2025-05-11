@@ -1,0 +1,38 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.formGroup {
+    grid-column: 2;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 100px;
+    align-content: center;
+    justify-items: center;
+}
+
+select{
+    border-radius: 30px;
+    width: 100%;
+    font-size: 20px;
+    box-shadow: 2px 2px 10px black;
+    text-align-last: center;    
+}
+
+/* .backButton{
+    grid-column: 2;
+} */
+
+/* h1{
+    grid-column: 2;
+} */
+
+ul.errorlist {
+    display: none;
+}
