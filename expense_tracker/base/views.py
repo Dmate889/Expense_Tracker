@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Months, Year, Budget
 from .forms import YearForm, MonthsForm
 
@@ -26,23 +26,27 @@ def createNewYear(request):
     
     return render(request, 'base/createyear.html', context)
 
-def createMonth(request):
+def createMonth(request, year_id):
+    year = get_object_or_404(Year, id=year_id)
     form = MonthsForm()
     if request.method == "POST":
         form = MonthsForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect("getmonths")
+            month = form.save(commit=False)
+            month.year = year
+            month.save()
+            return redirect("getmonths", year_id=month.year.id)
 
-    context = {"form": form}
+    context = {"form": form, "year": year}
     
     return render(request, 'base/createmonth.html', context)
 
 
 def getMonths(request, year_id):
+    year = get_object_or_404(Year, id=year_id)
     months = Months.objects.filter(year_id=year_id)
     
-    context = {'months': months}
+    context = {'months': months, "year": year}
     return render(request, 'base/getmonths.html', context)
 
 def monthExpense(request, month_id):

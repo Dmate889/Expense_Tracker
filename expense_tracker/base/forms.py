@@ -10,4 +10,4 @@ class YearForm(ModelForm):
 class MonthsForm(ModelForm):
     class Meta:
         model = Months
-        fields = '__all__'
+        fields = ['name', 'created_by']

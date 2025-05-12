@@ -17,14 +17,14 @@
 </div>
 {% else %}
 <div class="zeroItems">
-  <p>You don't have any months created for the year.</p>
+  <p>You don't have any months created for this year.</p>
 </div>
 {% endif %}
 <div class="backButton">
   <a href="{% url 'getyears' %}">
     <button>Back</button>
   </a>
-  <a href="{% url 'createmonth' %}">
+  <a href="{% url 'createmonth' year.id %}">
     <button>Create Month</button>
   </a>
 </div>
