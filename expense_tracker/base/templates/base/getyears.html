@@ -7,8 +7,8 @@
 {% if years %}
 <div class="years">
     {% for year in years %}
-      <a href="{% url 'getmonths' %}" class="yearItem">
-          <button>{{ year }}</button>
+      <a href="{% url 'getmonths' year.id %}" class="yearItem">
+          <button>{{ year.year }}</button>
       </a>
     {% endfor %}
   </div>

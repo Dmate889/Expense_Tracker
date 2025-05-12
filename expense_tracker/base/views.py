@@ -39,8 +39,8 @@ def createMonth(request):
     return render(request, 'base/createmonth.html', context)
 
 
-def getMonths(request):
-    months = Months.objects.all()
+def getMonths(request, year_id):
+    months = Months.objects.filter(year_id=year_id)
     
     context = {'months': months}
     return render(request, 'base/getmonths.html', context)
