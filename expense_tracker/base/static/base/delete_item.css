@@ -1,0 +1,23 @@
+body {
+  display: grid;
+  grid-template-rows: 1fr;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form_delete {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.submitButton {
+  grid-row: 2;
+}
+
+.cancelButton {
+  grid-row: 3;
+}

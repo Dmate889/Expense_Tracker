@@ -14,6 +14,13 @@ def getYears(request):
     context = {'years': years}
     return render(request, 'base/getyears.html', context)
 
+def getMonths(request, year_id):
+    year = get_object_or_404(Year, id=year_id)
+    months = Months.objects.filter(year_id=year_id)
+    
+    context = {'months': months, "year": year}
+    return render(request, 'base/getmonths.html', context)
+
 def createNewYear(request):
     form = YearForm()
     if request.method == "POST":
@@ -41,13 +48,14 @@ def createMonth(request, year_id):
     
     return render(request, 'base/createmonth.html', context)
 
+def deleteYear(request, year_id):
+    year = get_object_or_404(Year, id = year_id)
 
-def getMonths(request, year_id):
-    year = get_object_or_404(Year, id=year_id)
-    months = Months.objects.filter(year_id=year_id)
+    if request.method == "POST":
+        year.delete()
+        return redirect("home")
     
-    context = {'months': months, "year": year}
-    return render(request, 'base/getmonths.html', context)
+    return render(request, "base/delete_item.html", {"obj": year})
 
 def monthExpense(request, month_id):
     month = Months.objects.get(id = month_id)

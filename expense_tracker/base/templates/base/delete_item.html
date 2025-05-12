@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'base/delete_item.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="form_delete">
+  <h1>Are you sure you want to delete "{{ obj }}"?</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="submitButton">Yes, Delete</button>
+  </form>
+
+  <a href="{% url 'getyears' %}" class="cancelButton">
+    <button type="button">Cancel</button>
+  </a>
+</div>
+
+
+{% endblock content %}

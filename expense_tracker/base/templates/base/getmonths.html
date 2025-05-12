@@ -1,7 +1,7 @@
 {% extends "base/base.html" %}
 {% load static %} 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'base/getmonths_v4.css' %}" />
+<link rel="stylesheet" href="{% static 'base/getmonths_v5.css' %}" />
 {% endblock styles %} 
 {% block content %}
 <div class="title_months">
@@ -27,6 +27,9 @@
   <a href="{% url 'createmonth' year.id %}">
     <button>Create Month</button>
   </a>
+      <a href="{% url 'deleteyear' year.id %}">
+       <button>Delete Year</button>
+     </a>
 </div>
 
 {% endblock content %}
