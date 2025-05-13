@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Year, Months
+from .models import Year, Months, Budget
 
 
 class YearForm(ModelForm):
@@ -11,3 +11,8 @@ class MonthsForm(ModelForm):
     class Meta:
         model = Months
         fields = ['name', 'created_by']
+
+class BudgetForm(ModelForm):
+    class Meta:
+        model = Budget
+        fields = ['amount', 'created_by']

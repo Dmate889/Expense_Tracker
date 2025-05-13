@@ -54,3 +54,12 @@ button {
     transition: 0.3s;
 }
 
+.zeroItems{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-column: 2;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+
+}

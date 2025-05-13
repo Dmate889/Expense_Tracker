@@ -11,4 +11,5 @@ urlpatterns = [
     path("getmonths<int:year_id>/", views.getMonths, name="getmonths"),
     path("createmonth/<int:year_id>", views.createMonth, name="createmonth"),
     path('monthexpense/<int:month_id>', views.monthExpense, name="monthexpense"),
+    path('createbudget/<int:month_id>', views.createBudget, name="createbudget"),
 ]

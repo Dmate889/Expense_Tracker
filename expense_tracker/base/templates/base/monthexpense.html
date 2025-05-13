@@ -2,10 +2,11 @@
 {% load static %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'base/monthexpense_v2.css' %}">
+<link rel="stylesheet" href="{% static 'base/monthexpense_v3.css' %}">
 {% endblock styles %}
 
 {% block content %}
+{% if budget %}
 <div class="centerColumn">
     <div class="monthData">
       <h1>{{month}}</h1>
@@ -27,4 +28,12 @@
         <button>Back</button>
     </a>
   </div>
+{% else %}
+<div class="zeroItems">
+  <h1>You don't have any budget added for this month</h1>
+  <a href="{% url 'createbudget' month.id %}">
+    <button>Create budget</button>
+  </a>
+</div>
+{% endif %}
 {% endblock content %}

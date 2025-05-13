@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'base/createbudget.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<h1>Provide an amount for your monthly budget</h1>
+ <div class="formGroup">
+    <form method="POST">
+    {% csrf_token %}
+    <div class="formGroup">
+        {{ form.amount }}
+        {{ form.created_by }}
+        <button type="submit">Submit</button>
+    </div>
+</form>
+</div> 
+<!-- <div class="backButton">
+    <a href="{% url 'monthexpense' month.id %}">
+        <button>Back</button>
+    </a>
+</div> -->
+
+
+{% endblock content %}
