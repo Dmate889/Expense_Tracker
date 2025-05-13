@@ -57,6 +57,17 @@ def deleteYear(request, year_id):
     
     return render(request, "base/delete_item.html", {"obj": year})
 
+def deleteMonth(request, month_id):
+
+    month = get_object_or_404(Months, id = month_id)
+
+    if request.method == "POST":
+        month.delete()
+        return redirect("getmonths", year_id=month.year.id)
+
+    context = {"obj": month}
+    return render(request, 'base/delete_item.html', context)
+
 def monthExpense(request, month_id):
     month = Months.objects.get(id = month_id)
     budget = Budget.objects.get(month = month)

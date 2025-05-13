@@ -20,8 +20,11 @@
       <button>Deduct</button>
       <button>Add</button>
     </div>
+    <a href="{% url 'deletemonth' month.id %}">
+      <button>Delete month</button>
+    </a>
     <a href="{{request.META.HTTP_REFERER}}">
-        <button>back</button>
+        <button>Back</button>
     </a>
   </div>
 {% endblock content %}
