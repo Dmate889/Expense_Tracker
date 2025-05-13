@@ -24,7 +24,7 @@
     <a href="{% url 'deletemonth' month.id %}">
       <button>Delete month</button>
     </a>
-    <a href="{{request.META.HTTP_REFERER}}">
+    <a href="{% url 'getmonths' year.id %}">
         <button>Back</button>
     </a>
   </div>

@@ -70,6 +70,7 @@ def deleteMonth(request, month_id):
 
 def monthExpense(request, month_id):
     month = get_object_or_404(Months, id = month_id)
+    year = month.year
     
     try:
         budget = Budget.objects.get(month = month)
@@ -77,7 +78,7 @@ def monthExpense(request, month_id):
         budget = None
 
 
-    context = {'budget': budget, 'month': month}
+    context = {'budget': budget, 'month': month, 'year': year}
     return render(request, 'base/monthexpense.html', context)
 
 def createBudget(request, month_id):
