@@ -1,5 +1,5 @@
 {% extends "base/base.html" %} {% load static %} {% block styles %}
-<link rel="stylesheet" href="{% static 'base/getyears_v4.css' %}" />
+<link rel="stylesheet" href="{% static 'base/getyears_v5.css' %}" />
 {% endblock styles %} {% block content %}
 <div class="title_years">
     <h1>The list of years</h1>
@@ -21,6 +21,9 @@
   <a href="{% url 'home' %}">
     <button>Back</button>
   </a>
+   <a href="{% url 'createyear' %}">
+            <button>Create a new year</button>
+        </a>
 </div>
 
 {% endblock content %}

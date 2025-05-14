@@ -24,7 +24,9 @@ body {
 }
 
 .backButton{
+    display: flex;
     justify-self: center;
+    gap: 20px;
 }
 
 .zeroItems{

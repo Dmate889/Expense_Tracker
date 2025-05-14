@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Months, Year, Budget
-from .forms import YearForm, MonthsForm, BudgetForm
+from .forms import YearForm, MonthsForm, BudgetForm, ExpensesForm
 from django.contrib import messages
 
 # Create your views here.
@@ -97,10 +97,21 @@ def createBudget(request, month_id):
         if form.is_valid():
             budget = form.save(commit = False)
             budget.month = month
-            budget.created_by = request.user
             budget.save()
             return redirect("monthexpense", month_id = budget.month.id)
 
     context = {"form": form, "month": month}
 
     return render(request, 'base/createBudget.html', context)
+
+def adjustBudget(request):
+
+    form = ExpensesForm()
+
+    if request.method == "POST":
+        form = ExpensesForm(request.POST)
+        
+
+
+    context = {}
+    return render(request, 'base/adjust_amount.html', context)

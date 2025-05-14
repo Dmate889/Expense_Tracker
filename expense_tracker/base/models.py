@@ -49,6 +49,7 @@ class Budget(models.Model):
         return str(self.amount)
 
 class Expenses(models.Model):
+    budget =  models.ForeignKey(Budget, null=True, on_delete=models.CASCADE)
     expense = DecimalField(max_digits=10, decimal_places=2)
     category = CharField(max_length=20)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)

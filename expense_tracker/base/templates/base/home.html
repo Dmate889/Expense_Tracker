@@ -5,12 +5,9 @@
         <link rel="stylesheet" href="{% static 'base\home_v2.css' %}">
     {% endblock styles %}
     <div class="home-selector">
-        <h1>Select a year or create one</h1>
+        <h1>Select a year from the list</h1>
         <a href="{% url 'getyears' %}">
             <button>List of Years</button>
-        </a>
-        <a href="{% url 'createyear' %}">
-            <button>Create a new year</button>
         </a>
     </div>
 {% endblock %}
