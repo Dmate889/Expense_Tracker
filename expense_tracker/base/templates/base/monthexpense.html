@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'base/monthexpense_v3.css' %}">
+<link rel="stylesheet" href="{% static 'base/monthexpense_v4.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -34,6 +34,12 @@
   <a href="{% url 'createbudget' month.id %}">
     <button>Create budget</button>
   </a>
+   <a href="{% url 'deletemonth' month.id %}">
+      <button>Delete month</button>
+    </a>
+    <a href="{% url 'getmonths' year.id %}">
+        <button>Back</button>
+    </a>
 </div>
 {% endif %}
 {% endblock content %}

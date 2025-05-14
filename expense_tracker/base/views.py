@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Months, Year, Budget
 from .forms import YearForm, MonthsForm, BudgetForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -36,13 +37,18 @@ def createNewYear(request):
 def createMonth(request, year_id):
     year = get_object_or_404(Year, id=year_id)
     form = MonthsForm()
+
     if request.method == "POST":
         form = MonthsForm(request.POST)
         if form.is_valid():
             month = form.save(commit=False)
             month.year = year
-            month.save()
-            return redirect("getmonths", year_id=month.year.id)
+            exists = Months.objects.filter(name = month.name, year = month.year).exists()
+            if exists:
+                messages.error(request, "This month already exists in this year") 
+            else:
+                month.save()
+                return redirect("getmonths", year_id=month.year.id)
 
     context = {"form": form, "year": year}
     

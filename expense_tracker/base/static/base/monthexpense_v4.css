@@ -2,6 +2,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     min-height: 100vh;
+    margin: 0;
 }
 
 .centerColumn {
@@ -56,7 +57,7 @@ button {
 
 .zeroItems{
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-column: 2;
     text-align: center;
     align-items: center;

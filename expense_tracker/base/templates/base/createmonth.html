@@ -2,12 +2,21 @@
 {% load static %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'base/createmonth.css' %}">
+    <link rel="stylesheet" href="{% static 'base/createmonth_v1.css' %}">
 {% endblock styles %}
 
 {% block content %}
 
 <h1>Add a new month for this year</h1>
+{% if messages %}
+
+    <div class="messages">
+        {% for message in messages %}
+          {{message}}
+        {% endfor %}
+    </div>
+  
+{% endif %}
 <form method="POST">
   {% csrf_token %}
   <div class="formGroup">
