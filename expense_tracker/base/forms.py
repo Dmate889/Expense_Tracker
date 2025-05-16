@@ -20,4 +20,4 @@ class BudgetForm(ModelForm):
 class ExpensesForm(ModelForm):
     class Meta:
         model = Expenses
-        fields = '__all__'
+        fields = ['expense', 'created_by']

@@ -104,14 +104,27 @@ def createBudget(request, month_id):
 
     return render(request, 'base/createBudget.html', context)
 
-def adjustBudget(request):
+def adjustBudget(request, budget_id):
+    q = request.GET.get("q") 
 
     form = ExpensesForm()
+    budget = get_object_or_404(Budget, id = budget_id)
 
     if request.method == "POST":
         form = ExpensesForm(request.POST)
-        
+        if form.is_valid():
+            expense = form.save(commit = False)
+            expense.budget = budget
+            expense.save()
+            if q == "d":
+                budget.amount -= expense.expense
+                if budget.amount < 0: budget.amount = 0
+            elif q == "a":
+                budget.amount += expense.expense
+            
+            budget.save()
+            return redirect("monthexpense", month_id=expense.budget.month.id)
 
 
-    context = {}
+    context = {"form": form, "budget": budget, "q": q}
     return render(request, 'base/adjust_amount.html', context)

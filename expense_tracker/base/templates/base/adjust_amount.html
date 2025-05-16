@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'base/adjust_amount.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<h1>Enter the amount of expense</h1>
+    <form method="POST">
+    {% csrf_token %}
+        {{form}}
+            <button type ="submit">Submit</button>
+    </form>
+    <button type ="submit">Back</button>
+{% endblock content %}
