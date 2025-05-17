@@ -12,5 +12,7 @@
         {{form}}
             <button type ="submit">Submit</button>
     </form>
-    <button type ="submit">Back</button>
+    <a href="{% url 'monthexpense' budget.id %}">
+        <button type ="submit">Back</button>
+    </a>
 {% endblock content %}

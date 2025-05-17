@@ -48,13 +48,27 @@ class Budget(models.Model):
     def __str__(self):
         return str(self.amount)
 
+
 class Expenses(models.Model):
+
+    CATEGORY_CHOICES = [
+    ("pets", "Pets"),
+    ("bills", "Bills"),
+    ("trav", "Travel"),
+    ("app", "Apartment"),
+    ("shop", "Shopping"),
+    ("gym", "Gym"),
+    ("date", "Date"),
+    ("extra", "Extra"),
+    ("save", "Saving"),
+
+    ]
+
     budget =  models.ForeignKey(Budget, null=True, on_delete=models.CASCADE)
     expense = DecimalField(max_digits=10, decimal_places=2)
-    category = CharField(max_length=20)
+    category= CharField(max_length= 20, choices=CATEGORY_CHOICES )
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.category}: {self.expense}"
-
