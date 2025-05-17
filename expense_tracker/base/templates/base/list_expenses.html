@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'base/list_expenses.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <h1>List of expense categories for the month</h1>
+
+    <div class="expenseBlock">
+        <h3>Apartmant</h3>
+        <h3>Shopping</h3>
+        <h3>Bills</h3>
+        <h3>Travel</h3>
+        <h3>Pets</h3>
+        <h3>Date</h3>
+        <h3>Gym</h3>
+        <h3>Extra</h3>
+        <h3>Savings</h3>
+    </div>
+
+        <button>Back</button>
+    
+{% endblock content %}

@@ -24,6 +24,9 @@
        <a href="{% url 'adjustamount' budget.id %}?q=a">
         <button>Add</button>
       </a>
+      <a href="{% url 'listexpenses' budget.id %}">
+        <button>List Expenses</button>
+      </a>
     </div>
     <a href="{% url 'deletemonth' month.id %}">
       <button>Delete month</button>

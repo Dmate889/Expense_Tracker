@@ -128,3 +128,9 @@ def adjustBudget(request, budget_id):
 
     context = {"form": form, "budget": budget, "q": q}
     return render(request, 'base/adjust_amount.html', context)
+
+def listExpenses(request,  budget_id):
+
+    context = {}
+
+    return render(request, 'base/list_expenses.html', context)

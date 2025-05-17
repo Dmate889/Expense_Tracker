@@ -13,4 +13,5 @@ urlpatterns = [
     path('monthexpense/<int:month_id>', views.monthExpense, name="monthexpense"),
     path('createbudget/<int:month_id>', views.createBudget, name="createbudget"),
     path('adjust_amount/<int:budget_id>', views.adjustBudget, name="adjustamount"),
+    path('list_expenses/<int:budget_id>', views.listExpenses, name="listexpenses"),
 ]
