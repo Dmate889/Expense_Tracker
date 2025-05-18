@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'base/login_page_v2.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <label>Username</label>
+        <input type="text" name="username" autocomplete="OFF">
+        <label>Password</label>
+        <input type="password" name="password" autocomplete="OFF">
+        <button class="submitButton" type="submit">Login</button>
+    </form>
+{% endblock content %}

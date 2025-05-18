@@ -1,15 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Months, Year, Budget, Categories, Expenses
+from .models import Months, Year, Budget, Expenses
 from .forms import YearForm, MonthsForm, BudgetForm, ExpensesForm
 from django.contrib import messages
 from django.db.models import Sum
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
+
 
 def home(request):
     user = request.user
     return render(request, 'base/home.html', {'user': user})
 
+@login_required(login_url='loginpage')
 def getYears(request):
     years = Year.objects.all()
     
@@ -142,3 +148,30 @@ def listExpenses(request,  budget_id):
     context = {"category_amount_sum": category_amount_sum, "budget": budget}
 
     return render(request, 'base/list_expenses.html', context)
+
+def login_page(request):
+    page = 'login'
+
+    if request.user.is_authenticated:
+        return redirect('home')
+
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        try: 
+            user = User.objects.get(username = username)
+        except:
+            messages.error(request, "User doesn't exists")
+
+        user = authenticate(request, username= username, password = password)
+
+        if user is not None:
+            login(request,user)
+            return redirect("home")
+        else:
+            messages.error(request, "Username or Password is not correct")
+    
+
+    context = {"page": page}
+    return render(request, 'base/login_page.html', context)

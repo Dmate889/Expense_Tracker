@@ -1,0 +1,36 @@
+body{
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+    justify-items: center;
+    align-items: center;
+}
+
+form{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 25px;
+    box-shadow: 2px 2px 10px black;
+    padding: 50px;
+    border-radius: 30px;
+}
+
+input{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+label{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.submitButton{
+    height: 5vh;
+    width: 10vw;
+    justify-self: center;
+    align-self: center;
+}
