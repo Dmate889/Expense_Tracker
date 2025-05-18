@@ -1,15 +1,18 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'base/adjust_amount.css' %}">
+<link rel="stylesheet" href="{% static 'base/adjust_amount_v2.css' %}">
 {% endblock styles %}
 
 {% block content %}
-<h1>Enter the amount of expense</h1>
+<h1>Enter the amount of expense and tag a category</h1>
     <form method="POST">
     {% csrf_token %}
-        {{form}}
+        {{form.expense}}
+        {{form.category}}
+        {{form.created_by}}
             <button type ="submit">Submit</button>
     </form>
     <a href="{% url 'monthexpense' budget.id %}">

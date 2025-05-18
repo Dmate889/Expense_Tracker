@@ -31,6 +31,6 @@ a{
 h3{
     display: grid;
     grid-template-rows: 1fr 1fr;
-    font-size: 30px;
+    font-size: 25px;
     font-family: monospace;
 }

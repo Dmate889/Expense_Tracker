@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'base/monthexpense_v4.css' %}">
@@ -14,7 +15,7 @@
     </div>
     <div class="amountContainer">
       <div class="amount">
-        {{budget.amount|floatformat:0}} HUF
+        {{ budget.amount|floatformat:2|intcomma }} HUF
       </div>
     </div>
     <div class="expenseButtons">

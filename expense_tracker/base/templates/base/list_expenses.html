@@ -1,8 +1,9 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'base/list_expenses_v3.css' %}">
+    <link rel="stylesheet" href="{% static 'base/list_expenses_v4.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -11,7 +12,7 @@
     <div class="expenseBlock">
         {% for item in category_amount_sum %}
             <h3>{{item.category__name}}
-                <div>{{item.total}}</div>
+                <div>{{item.total | intcomma}} HUF</div>
             </h3>
         {% endfor %}
     </div>
