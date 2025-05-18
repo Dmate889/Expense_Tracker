@@ -18,6 +18,13 @@ class BudgetForm(ModelForm):
         fields = ['amount', 'created_by']
     
 class ExpensesForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        adjust_type = kwargs.pop("adjust_type", None)
+        super().__init__(*args, **kwargs)
+
+        if adjust_type == "add":
+            self.fields.pop("category")
+
     class Meta:
         model = Expenses
         fields = ['expense', 'created_by', 'category']

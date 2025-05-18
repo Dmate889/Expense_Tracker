@@ -108,7 +108,7 @@ def createBudget(request, month_id):
 def adjustBudget(request, budget_id):
     adjust = request.GET.get("adjust")
 
-    form = ExpensesForm()
+    form = ExpensesForm(adjust_type = adjust)
     budget = get_object_or_404(Budget, id = budget_id)
 
     if request.method == "POST":
