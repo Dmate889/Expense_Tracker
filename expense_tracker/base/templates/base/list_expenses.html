@@ -2,24 +2,22 @@
 {% load static %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'base/list_expenses.css' %}">
+    <link rel="stylesheet" href="{% static 'base/list_expenses_v3.css' %}">
 {% endblock styles %}
 
 {% block content %}
     <h1>List of expense categories for the month</h1>
 
     <div class="expenseBlock">
-        <h3>Apartmant</h3>
-        <h3>Shopping</h3>
-        <h3>Bills</h3>
-        <h3>Travel</h3>
-        <h3>Pets</h3>
-        <h3>Date</h3>
-        <h3>Gym</h3>
-        <h3>Extra</h3>
-        <h3>Savings</h3>
+        {% for item in category_amount_sum %}
+            <h3>{{item.category__name}}
+                <div>{{item.total}}</div>
+            </h3>
+        {% endfor %}
     </div>
 
-        <button>Back</button>
+        <a href="{% url 'monthexpense' budget.id %}">
+            <button>Back</button>
+        </a>
     
 {% endblock content %}

@@ -49,24 +49,33 @@ class Budget(models.Model):
         return str(self.amount)
 
 
-class Expenses(models.Model):
+
+class Categories(models.Model):
 
     CATEGORY_CHOICES = [
-    ("pets", "Pets"),
-    ("bills", "Bills"),
-    ("trav", "Travel"),
-    ("app", "Apartment"),
-    ("shop", "Shopping"),
-    ("gym", "Gym"),
-    ("date", "Date"),
-    ("extra", "Extra"),
-    ("save", "Saving"),
+    ("Pets", "Pets"),
+    ("Bills", "Bills"),
+    ("Travel", "Travel"),
+    ("Apartment", "Apartment"),
+    ("Shopping", "Shopping"),
+    ("Gym", "Gym"),
+    ("Date", "Date"),
+    ("Extra", "Extra"),
+    ("Saving", "Saving"),
+]
 
-    ]
+    name = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    amount = models.DecimalField(max_digits=10, decimal_places= 2, default=0)
+
+    def __str__(self):
+        return dict(self.CATEGORY_CHOICES).get(self.name, self.name)
+
+class Expenses(models.Model):
 
     budget =  models.ForeignKey(Budget, null=True, on_delete=models.CASCADE)
-    expense = DecimalField(max_digits=10, decimal_places=2)
-    category= CharField(max_length= 20, choices=CATEGORY_CHOICES )
+    expense = models.DecimalField(max_digits=10, decimal_places=2)
+    adjust_type = models.CharField(choices=[("add", "Add"), ("deduct", "Deduct")], null = True)
+    category = models.ForeignKey(Categories, null=True, on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 

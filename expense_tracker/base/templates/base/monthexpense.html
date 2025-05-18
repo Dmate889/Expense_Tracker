@@ -18,10 +18,10 @@
       </div>
     </div>
     <div class="expenseButtons">
-      <a href="{% url 'adjustamount' budget.id %}?q=d">
+      <a href="{% url 'adjustamount' budget.id %}?adjust=deduct">
         <button>Deduct</button>
       </a>
-       <a href="{% url 'adjustamount' budget.id %}?q=a">
+       <a href="{% url 'adjustamount' budget.id %}?adjust=add">
         <button>Add</button>
       </a>
       <a href="{% url 'listexpenses' budget.id %}">

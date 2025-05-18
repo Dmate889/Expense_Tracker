@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Months, Year, Budget
+from .models import Months, Year, Budget, Categories, Expenses
 from .forms import YearForm, MonthsForm, BudgetForm, ExpensesForm
 from django.contrib import messages
+from django.db.models import Sum
 
 # Create your views here.
 
@@ -105,7 +106,7 @@ def createBudget(request, month_id):
     return render(request, 'base/createBudget.html', context)
 
 def adjustBudget(request, budget_id):
-    q = request.GET.get("q") 
+    adjust = request.GET.get("adjust")
 
     form = ExpensesForm()
     budget = get_object_or_404(Budget, id = budget_id)
@@ -115,22 +116,29 @@ def adjustBudget(request, budget_id):
         if form.is_valid():
             expense = form.save(commit = False)
             expense.budget = budget
+            expense.adjust_type = adjust
             expense.save()
-            if q == "d":
+            if adjust == "deduct":
                 budget.amount -= expense.expense
                 if budget.amount < 0: budget.amount = 0
-            elif q == "a":
+            elif adjust == "add":
                 budget.amount += expense.expense
             
             budget.save()
             return redirect("monthexpense", month_id=expense.budget.month.id)
 
 
-    context = {"form": form, "budget": budget, "q": q}
+    context = {"form": form, "budget": budget, "adjust": adjust}
     return render(request, 'base/adjust_amount.html', context)
 
 def listExpenses(request,  budget_id):
+    budget = get_object_or_404(Budget, id = budget_id)
 
-    context = {}
+    category_amount_sum = Expenses.objects.filter(budget__id = budget_id, adjust_type = "deduct") \
+    .values("category__name") \
+    .annotate(total = Sum("expense"))
+    
+
+    context = {"category_amount_sum": category_amount_sum, "budget": budget}
 
     return render(request, 'base/list_expenses.html', context)
