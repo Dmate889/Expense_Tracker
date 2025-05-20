@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
+@login_required(login_url='loginpage')
 def home(request):
     user = request.user
     return render(request, 'base/home.html', {'user': user})
@@ -22,6 +22,7 @@ def getYears(request):
     context = {'years': years}
     return render(request, 'base/getyears.html', context)
 
+@login_required(login_url='loginpage')
 def getMonths(request, year_id):
     year = get_object_or_404(Year, id=year_id)
     months = Months.objects.filter(year_id=year_id)
@@ -29,6 +30,7 @@ def getMonths(request, year_id):
     context = {'months': months, "year": year}
     return render(request, 'base/getmonths.html', context)
 
+@login_required(login_url='loginpage')
 def createNewYear(request):
     form = YearForm()
     if request.method == "POST":
@@ -41,6 +43,7 @@ def createNewYear(request):
     
     return render(request, 'base/createyear.html', context)
 
+@login_required(login_url='loginpage')
 def createMonth(request, year_id):
     year = get_object_or_404(Year, id=year_id)
     form = MonthsForm()
@@ -61,6 +64,8 @@ def createMonth(request, year_id):
     
     return render(request, 'base/createmonth.html', context)
 
+
+@login_required(login_url='loginpage')
 def deleteYear(request, year_id):
     year = get_object_or_404(Year, id = year_id)
 
@@ -70,6 +75,7 @@ def deleteYear(request, year_id):
     
     return render(request, "base/delete_item.html", {"obj": year})
 
+@login_required(login_url='loginpage')
 def deleteMonth(request, month_id):
 
     month = get_object_or_404(Months, id = month_id)
@@ -81,6 +87,7 @@ def deleteMonth(request, month_id):
     context = {"obj": month}
     return render(request, 'base/delete_item.html', context)
 
+@login_required(login_url='loginpage')
 def monthExpense(request, month_id):
     month = get_object_or_404(Months, id = month_id)
     year = month.year
@@ -94,6 +101,7 @@ def monthExpense(request, month_id):
     context = {'budget': budget, 'month': month, 'year': year}
     return render(request, 'base/monthexpense.html', context)
 
+@login_required(login_url='loginpage')
 def createBudget(request, month_id):
 
     month = get_object_or_404(Months, id = month_id)
@@ -111,6 +119,7 @@ def createBudget(request, month_id):
 
     return render(request, 'base/createBudget.html', context)
 
+@login_required(login_url='loginpage')
 def adjustBudget(request, budget_id):
     adjust = request.GET.get("adjust")
 
@@ -137,6 +146,7 @@ def adjustBudget(request, budget_id):
     context = {"form": form, "budget": budget, "adjust": adjust}
     return render(request, 'base/adjust_amount.html', context)
 
+@login_required(login_url='loginpage')
 def listExpenses(request,  budget_id):
     budget = get_object_or_404(Budget, id = budget_id)
 
@@ -175,3 +185,10 @@ def login_page(request):
 
     context = {"page": page}
     return render(request, 'base/login_page.html', context)
+
+
+
+def logout_user(request):
+
+    logout(request)
+    return redirect('home')

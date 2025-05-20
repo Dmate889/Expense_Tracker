@@ -2,11 +2,23 @@
 {% load static %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'base/login_page_v2.css' %}">
+    <link rel="stylesheet" href="{% static 'base/login_page_v3.css' %}">
 {% endblock styles %}
 
+
+
 {% block content %}
+
+
     <form method="POST">
+        {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      {{message}}
+    {% endfor %}
+  </ul>
+{% endif %}
+
         {% csrf_token %}
         <label>Username</label>
         <input type="text" name="username" autocomplete="OFF">
@@ -14,4 +26,6 @@
         <input type="password" name="password" autocomplete="OFF">
         <button class="submitButton" type="submit">Login</button>
     </form>
+
+
 {% endblock content %}
