@@ -8,7 +8,7 @@
 <div class="years">
     {% for year in years %}
       <a href="{% url 'getmonths' year.id %}" class="yearItem">
-          <button>{{ year.year }}</button>
+          {{ year.year }}
       </a>
     {% endfor %}
   </div>
@@ -19,10 +19,10 @@
   {% endif %}
 <div class="backButton">
   <a href="{% url 'home' %}">
-    <button>Back</button>
+    Back
   </a>
    <a href="{% url 'createyear' %}">
-            <button>Create a new year</button>
+            Create a new year
         </a>
 </div>
 

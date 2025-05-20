@@ -1,4 +1,7 @@
-button{
+a{
+    display: grid;
+    align-items: center;
+    justify-content: center;
     height: 10vh;
     width: 20vw;
     border-radius: 40px;
@@ -6,6 +9,9 @@ button{
     box-shadow: 2px 2px 10px black;
     cursor: pointer;
     font-family: monospace;
+    background-color: rgb(239, 232, 232);
+    text-decoration: none;
+    color: inherit;
 }
 
 
@@ -13,3 +19,18 @@ h1{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+button{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    width: 20vw;
+    border-radius: 40px;
+    border: none;
+    box-shadow: 2px 2px 10px black;
+    cursor: pointer;
+    font-family: monospace;
+    background-color: rgb(239, 232, 232);
+    text-decoration: none;
+    color: inherit;
+}

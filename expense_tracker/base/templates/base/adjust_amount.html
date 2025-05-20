@@ -3,7 +3,7 @@
 {% load humanize %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'base/adjust_amount_v2.css' %}">
+<link rel="stylesheet" href="{% static 'base/adjust_amount_v3.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -16,6 +16,6 @@
             <button type ="submit">Submit</button>
     </form>
     <a href="{% url 'monthexpense' budget.id %}">
-        <button>Back</button>
+        Back
     </a>
 {% endblock content %}

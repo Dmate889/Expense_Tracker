@@ -20,33 +20,33 @@
     </div>
     <div class="expenseButtons">
       <a href="{% url 'adjustamount' budget.id %}?adjust=deduct">
-        <button>Deduct</button>
+        Deduct
       </a>
        <a href="{% url 'adjustamount' budget.id %}?adjust=add">
-        <button>Add</button>
+        Add
       </a>
       <a href="{% url 'listexpenses' budget.id %}">
-        <button>List Expenses</button>
+        List Expenses
       </a>
     </div>
     <a href="{% url 'deletemonth' month.id %}">
-      <button>Delete month</button>
+      Delete month
     </a>
     <a href="{% url 'getmonths' year.id %}">
-        <button>Back</button>
+        Back
     </a>
   </div>
 {% else %}
 <div class="zeroItems">
   <h1>You don't have any budget added for this month</h1>
   <a href="{% url 'createbudget' month.id %}">
-    <button>Create budget</button>
+    Create budget
   </a>
    <a href="{% url 'deletemonth' month.id %}">
-      <button>Delete month</button>
+      Delete month
     </a>
     <a href="{% url 'getmonths' year.id %}">
-        <button>Back</button>
+        Back
     </a>
 </div>
 {% endif %}

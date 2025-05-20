@@ -1,7 +1,7 @@
 {% extends "base/base.html" %}
 {% load static %}
 {% block styles %}
-  <link rel="stylesheet" href="{% static 'base/delete_item.css' %}">
+  <link rel="stylesheet" href="{% static 'base/delete_item_v2.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -14,7 +14,7 @@
   </form>
 
   <a href="{% url 'getyears' %}" class="cancelButton">
-    <button type="button">Cancel</button>
+    Cancel
   </a>
 </div>
 

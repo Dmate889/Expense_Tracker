@@ -11,7 +11,7 @@
 <div class="months">
   {% for month in months %}
   <a href="{% url 'monthexpense' month.id %}">
-    <button>{{month}}</button>
+    {{month}}
   </a>
   {% endfor %}
 </div>
@@ -22,13 +22,13 @@
 {% endif %}
 <div class="backButton">
   <a href="{% url 'getyears' %}">
-    <button>Back</button>
+    Back
   </a>
   <a href="{% url 'createmonth' year.id %}">
-    <button>Create Month</button>
+    Create Month
   </a>
       <a href="{% url 'deleteyear' year.id %}">
-       <button>Delete Year</button>
+       Delete Year
      </a>
 </div>
 
