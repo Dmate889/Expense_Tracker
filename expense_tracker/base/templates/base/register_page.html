@@ -1,7 +1,6 @@
 {% extends 'base/base.html' %} {% load static %} {% block styles %}
-<link rel="stylesheet" href="{% static 'base/login_page_v3.css' %}" />
+<link rel="stylesheet" href="{% static 'base/register_page_v4.css' %}" />
 {% endblock styles %} {% block content %}
-
 
 <form method="POST">
   {% if messages %}
@@ -9,12 +8,18 @@
     {% for message in messages %} {{message}} {% endfor %}
   </ul>
   {% endif %} {% csrf_token %}
+
   <label>Username</label>
-  <input type="text" name="username" autocomplete="OFF" />
+  {{form.username}}
+
   <label>Password</label>
-  <input type="password" name="password" autocomplete="OFF" />
-  <button class="submitButton" type="submit">Login</button>
-  <a class="submitButton" href="{% url 'register' %}">Sign up</a>
+  {{form.password1}}
+
+  <label>Confirm Password</label>
+  {{form.password2}}
+
+  <button class="submitButton" type="submit">Register</button>
+  <a href="{% url 'loginpage' %}">Back</a>
 </form>
 
 {% endblock content %}

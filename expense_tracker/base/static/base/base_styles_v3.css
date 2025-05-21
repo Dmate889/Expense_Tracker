@@ -34,3 +34,14 @@ button{
     text-decoration: none;
     color: inherit;
 }
+
+
+
+.messages{
+    font-size: 15px;
+    font-family: monospace;
+    box-shadow: 2px 2px 10px black;
+    padding: 20px;
+    border-radius: 30px;
+}
+

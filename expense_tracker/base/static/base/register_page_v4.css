@@ -1,18 +1,21 @@
 body{
-    display: grid;
-    grid-template-columns: 1fr;
     min-height: 100vh;
-    justify-items: center;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 2fr;
     align-items: center;
+    justify-items: center;
 }
 
+
+
 form{
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    gap: 25px;
     box-shadow: 2px 2px 10px black;
-    padding: 50px;
     border-radius: 30px;
+    padding: 50px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 15px;
 }
 
 input{
@@ -28,9 +31,13 @@ label{
     font-family: monospace;
 }
 
-.submitButton{
+.submitButton, a{
     height: 5vh;
     width: 10vw;
     justify-self: center;
     align-self: center;
+}
+
+.requirements_text{
+    grid-column: 2;
 }

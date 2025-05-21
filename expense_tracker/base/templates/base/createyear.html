@@ -8,17 +8,20 @@
 {% block content %}
 <h1>Add a new year</h1>
 <form method="POST">
+    {% if messages %}
+  <ul class="messages">
+    {% for message in messages %} {{message}} {% endfor %}
+  </ul>
+  {% endif %}
   {% csrf_token %}
   <div class="formGroup">
       {{ form.year }}
-      <!-- Just for testing purposes, later on it will be the session user -->
-      {{form.user}}
       <button type="submit">Submit</button>
+      <a href="{% url 'home' %}">
+          Back
+      </a>
     </div>
 </form>
-<a href="{% url 'home' %}">
-    Back
-</a>
 
 
 {% endblock content %}

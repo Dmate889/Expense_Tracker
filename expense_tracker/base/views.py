@@ -6,6 +6,7 @@ from django.db.models import Sum
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
@@ -36,8 +37,13 @@ def createNewYear(request):
     if request.method == "POST":
         form = YearForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect("getyears")
+            year =  form.save(commit = False)
+            if Year.objects.filter(year = year.year):
+                messages.error(request, "This year already exists!")
+            else:     
+                year.user = request.user
+                year.save()
+                return redirect("getyears")
 
     context = {"form": form}
     
@@ -53,6 +59,7 @@ def createMonth(request, year_id):
         if form.is_valid():
             month = form.save(commit=False)
             month.year = year
+            month.created_by = request.user
             exists = Months.objects.filter(name = month.name, year = month.year).exists()
             if exists:
                 messages.error(request, "This month already exists in this year") 
@@ -112,6 +119,7 @@ def createBudget(request, month_id):
         if form.is_valid():
             budget = form.save(commit = False)
             budget.month = month
+            budget.created_by = request.user
             budget.save()
             return redirect("monthexpense", month_id = budget.month.id)
 
@@ -122,8 +130,9 @@ def createBudget(request, month_id):
 @login_required(login_url='loginpage')
 def adjustBudget(request, budget_id):
     adjust = request.GET.get("adjust")
-
+    
     form = ExpensesForm(adjust_type = adjust)
+    
     budget = get_object_or_404(Budget, id = budget_id)
 
     if request.method == "POST":
@@ -132,6 +141,7 @@ def adjustBudget(request, budget_id):
             expense = form.save(commit = False)
             expense.budget = budget
             expense.adjust_type = adjust
+            expense.created_by = request.user
             expense.save()
             if adjust == "deduct":
                 budget.amount -= expense.expense
@@ -160,7 +170,6 @@ def listExpenses(request,  budget_id):
     return render(request, 'base/list_expenses.html', context)
 
 def login_page(request):
-    page = 'login'
 
     if request.user.is_authenticated:
         return redirect('home')
@@ -182,9 +191,7 @@ def login_page(request):
         else:
             messages.error(request, "Username or Password is not correct")
     
-
-    context = {"page": page}
-    return render(request, 'base/login_page.html', context)
+    return render(request, 'base/login_page.html')
 
 
 
@@ -192,3 +199,20 @@ def logout_user(request):
 
     logout(request)
     return redirect('home')
+
+
+def register_user(request):
+    form = UserCreationForm(request.POST or None)
+
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+           user =  form.save(commit = False)
+           user.save()    
+           login(request, user)  
+           return redirect("home") 
+        else: 
+            messages.error(request, "User already exists!")
+            
+    context = {"form": form}
+    return render(request, 'base/register_page.html', context)

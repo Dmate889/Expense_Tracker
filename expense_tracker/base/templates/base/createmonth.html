@@ -20,10 +20,7 @@
 <form method="POST">
   {% csrf_token %}
   <div class="formGroup">
-            {{ form.name }}
-      <!-- Just for testing purposes, later on it will be the session user -->
-      {{form.created_by}}
-      {{form.year}}
+      {{ form.name }}
       <button type="submit">Submit</button>
     </div>
 </form>

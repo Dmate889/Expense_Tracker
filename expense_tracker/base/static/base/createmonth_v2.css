@@ -32,13 +32,6 @@ h1{
     box-shadow: 2px 2px 10px black;
 }
 
-.messages{
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-}
-
-
 ul.errorlist {
     display: none;
 }

@@ -1,21 +1,22 @@
 from django.forms import ModelForm
+from django.contrib.auth.models import User
 from .models import Year, Months, Budget, Expenses
 
 
 class YearForm(ModelForm):
     class Meta:
         model = Year
-        fields = ['year', 'user']
+        fields = ['year']
 
 class MonthsForm(ModelForm):
     class Meta:
         model = Months
-        fields = ['name', 'created_by']
+        fields = ['name']
 
 class BudgetForm(ModelForm):
     class Meta:
         model = Budget
-        fields = ['amount', 'created_by']
+        fields = ['amount']
     
 class ExpensesForm(ModelForm):
     def __init__(self, *args, **kwargs):
@@ -27,5 +28,8 @@ class ExpensesForm(ModelForm):
 
     class Meta:
         model = Expenses
-        fields = ['expense', 'created_by', 'category']
+        fields = ['expense', 'category']
+
+
+    
     
