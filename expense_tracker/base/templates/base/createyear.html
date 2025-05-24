@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'base/createyear_v2.css' %}">
+    <link rel="stylesheet" href="{% static 'base/createyear_v4.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -16,7 +16,7 @@
   {% csrf_token %}
   <div class="formGroup">
       {{ form.year }}
-      <button type="submit">Submit</button>
+      <button class="createYearButton" type="submit">Submit</button>
       <a href="{% url 'home' %}">
           Back
       </a>

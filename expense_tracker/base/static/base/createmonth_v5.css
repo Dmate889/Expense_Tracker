@@ -26,12 +26,12 @@ select{
     text-align-last: center;    
 }
 
-h1{
-    padding: 30px;
-    border-radius: 30px;
-    box-shadow: 2px 2px 10px black;
-}
 
 ul.errorlist {
     display: none;
 }
+
+.submitButton{
+    background-color: #FF8661;
+}
+

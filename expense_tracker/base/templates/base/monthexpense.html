@@ -3,7 +3,7 @@
 {% load humanize %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'base/monthexpense_v4.css' %}">
+<link rel="stylesheet" href="{% static 'base/monthexpense_v5.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -18,17 +18,17 @@
       </div>
     </div>
     <div class="expenseButtons">
-      <a href="{% url 'adjustamount' budget.id %}?adjust=deduct">
+      <a class="deductButton" href="{% url 'adjustamount' budget.id %}?adjust=deduct">
         Deduct
       </a>
-       <a href="{% url 'adjustamount' budget.id %}?adjust=add">
+       <a class="addButton" href="{% url 'adjustamount' budget.id %}?adjust=add">
         Add
       </a>
       <a href="{% url 'listexpenses' budget.id %}">
         List Expenses
       </a>
     </div>
-    <a href="{% url 'deletemonth' month.id %}">
+    <a class="deleteMonth" href="{% url 'deletemonth' month.id %}">
       Delete month
     </a>
     <a href="{% url 'getmonths' year.id %}">
@@ -38,10 +38,10 @@
 {% else %}
 <div class="zeroItems">
   <h1>You don't have any budget added for this month</h1>
-  <a href="{% url 'createbudget' month.id %}">
+  <a class="createBudget" href="{% url 'createbudget' month.id %}">
     Create budget
   </a>
-   <a href="{% url 'deletemonth' month.id %}">
+   <a class="deleteMonth" href="{% url 'deletemonth' month.id %}">
       Delete month
     </a>
     <a href="{% url 'getmonths' year.id %}">

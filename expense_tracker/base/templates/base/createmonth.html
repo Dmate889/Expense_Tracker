@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'base/createmonth_v2.css' %}">
+    <link rel="stylesheet" href="{% static 'base/createmonth_v5.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -21,7 +21,7 @@
   {% csrf_token %}
   <div class="formGroup">
       {{ form.name }}
-      <button type="submit">Submit</button>
+      <button class="submitButton" type="submit">Submit</button>
     </div>
 </form>
 <div class="backButton">

@@ -2,10 +2,10 @@
 {% load static %}
 {% block content %}
     {% block styles %}
-        <link rel="stylesheet" href="{% static 'base\home_v2.css' %}">
+        <link rel="stylesheet" href="{% static 'base\home_v3.css' %}">
     {% endblock styles %}
     <div class="home-selector">
-        <h1>Welcome {{user}}!</h1>
+        <h1 class="userWelcome">Welcome {{user}}!</h1>
         <h1>Select a year from the list</h1>
         <a href="{% url 'getyears' %}">
             List of Years

@@ -1,3 +1,8 @@
+body{
+    background-color: #edf7e1;
+    margin: 0;
+}
+
 a{
     display: grid;
     align-items: center;
@@ -12,11 +17,22 @@ a{
     background-color: rgb(239, 232, 232);
     text-decoration: none;
     color: inherit;
+
+    background-color: #4CAF50;
+    color: white;
+    transition: 0.8s;
+
+}
+
+a:hover{
+    background-color: #eefbf2;
+    color: black;
 }
 
 
 h1{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: monospace;
+    color: #333333;
 }
 
 button{
@@ -32,9 +48,16 @@ button{
     font-family: monospace;
     background-color: rgb(239, 232, 232);
     text-decoration: none;
-    color: inherit;
+
+    background-color: #4CAF50;
+    color: white;
+    transition: 0.8s;
 }
 
+button:hover{
+    background-color: #eefbf2;
+    color: black;
+}
 
 
 .messages{

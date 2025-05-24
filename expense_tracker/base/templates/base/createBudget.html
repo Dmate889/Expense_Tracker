@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'base/createbudget.css' %}">
+    <link rel="stylesheet" href="{% static 'base/createbudget_v2.css' %}">
 {% endblock styles %}
 
 {% block content %}
@@ -11,15 +11,15 @@
     {% csrf_token %}
     <div class="formGroup">
         {{ form.amount }}
-        <button type="submit">Submit</button>
+        <button class="submitButton" type="submit">Submit</button>
     </div>
 </form>
 </div> 
-<!-- <div class="backButton">
+<div class="backButton">
     <a href="{% url 'monthexpense' month.id %}">
         <button>Back</button>
     </a>
-</div> -->
+</div>
 
 
 {% endblock content %}
