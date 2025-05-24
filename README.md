@@ -13,7 +13,7 @@
 - Data protection: users only see their own data
 - Modern responsive design with contextual color usage
 
-## 📚 Project Structure
+## Project Structure
 
 ```bash
 expense_tracker/
