@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponse
+
 
 
 # Create your views here.
@@ -18,27 +20,21 @@ def home(request):
 
 @login_required(login_url='loginpage')
 def getYears(request):
-    years = Year.objects.all()
-    
+    years = Year.objects.filter(user = request.user)
+
     context = {'years': years}
     return render(request, 'base/getyears.html', context)
 
-@login_required(login_url='loginpage')
-def getMonths(request, year_id):
-    year = get_object_or_404(Year, id=year_id)
-    months = Months.objects.filter(year_id=year_id)
-    
-    context = {'months': months, "year": year}
-    return render(request, 'base/getmonths.html', context)
 
 @login_required(login_url='loginpage')
 def createNewYear(request):
+
     form = YearForm()
     if request.method == "POST":
         form = YearForm(request.POST)
         if form.is_valid():
             year =  form.save(commit = False)
-            if Year.objects.filter(year = year.year):
+            if Year.objects.filter(year = year.year, user = request.user).exists():
                 messages.error(request, "This year already exists!")
             else:     
                 year.user = request.user
@@ -48,6 +44,15 @@ def createNewYear(request):
     context = {"form": form}
     
     return render(request, 'base/createyear.html', context)
+
+@login_required(login_url='loginpage')
+def getMonths(request, year_id):
+    year = get_object_or_404(Year, id=year_id)
+    months = Months.objects.filter(year_id=year_id, created_by = request.user)
+
+    
+    context = {'months': months, "year": year}
+    return render(request, 'base/getmonths.html', context)
 
 @login_required(login_url='loginpage')
 def createMonth(request, year_id):
@@ -76,6 +81,9 @@ def createMonth(request, year_id):
 def deleteYear(request, year_id):
     year = get_object_or_404(Year, id = year_id)
 
+    if year.user != request.user: 
+        return HttpResponse('Forbidden', status = 403)
+
     if request.method == "POST":
         year.delete()
         return redirect("home")
@@ -86,6 +94,9 @@ def deleteYear(request, year_id):
 def deleteMonth(request, month_id):
 
     month = get_object_or_404(Months, id = month_id)
+
+    if month.created_by != request.user: 
+        return HttpResponse('Forbidden', status = 403)
 
     if request.method == "POST":
         month.delete()
@@ -98,6 +109,7 @@ def deleteMonth(request, month_id):
 def monthExpense(request, month_id):
     month = get_object_or_404(Months, id = month_id)
     year = month.year
+
     
     try:
         budget = Budget.objects.get(month = month)
@@ -133,7 +145,7 @@ def adjustBudget(request, budget_id):
     
     form = ExpensesForm(adjust_type = adjust)
     
-    budget = get_object_or_404(Budget, id = budget_id)
+    budget = get_object_or_404(Budget, id = budget_id, month__created_by= request.user)
 
     if request.method == "POST":
         form = ExpensesForm(request.POST)

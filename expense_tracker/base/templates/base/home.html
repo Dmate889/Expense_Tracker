@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="{% static 'base\home_v2.css' %}">
     {% endblock styles %}
     <div class="home-selector">
+        <h1>Welcome {{user}}!</h1>
         <h1>Select a year from the list</h1>
         <a href="{% url 'getyears' %}">
             List of Years
