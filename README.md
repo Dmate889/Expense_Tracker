@@ -29,7 +29,7 @@ expense_tracker/
 
 ```
 
-Installation
+## Installation
 
 Clone the repository:
 
@@ -43,7 +43,7 @@ Create virtual environment and install dependencies:
 ```bash
 python -m venv venv
 source venv/bin/activate       # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
+pip install django
 ```
 
 Apply migrations and start the server:
@@ -56,17 +56,17 @@ Visit in your browser:
 http://127.0.0.1:8000
 
 
-##Usage
+## Usage
 
 - Register / Login
 - Create Year → Add Month → Input Salary / Expenses
 - Adjust budgets and view categorized expenses
 
-##User Permissions
+## User Permissions
 
 All financial data is user-specific and isolated. Users cannot access or modify other users' entries.
 
-##Tech Stack
+## Tech Stack
 
 - Python 3.13
 - Django 5.2
