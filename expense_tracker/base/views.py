@@ -193,7 +193,7 @@ def login_page(request):
         try: 
             user = User.objects.get(username = username)
         except:
-            messages.error(request, "User doesn't exists")
+            messages.error(request, "User doesn't exists or")
 
         user = authenticate(request, username= username, password = password)
 

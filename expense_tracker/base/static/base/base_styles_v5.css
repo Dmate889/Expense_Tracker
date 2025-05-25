@@ -66,5 +66,11 @@ button:hover{
     box-shadow: 2px 2px 10px black;
     padding: 20px;
     border-radius: 30px;
+    background-color: #DC143C;
+    color: white;
 }
 
+
+.authPages{
+    background-color: #eefbf2;
+}

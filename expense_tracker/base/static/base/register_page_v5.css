@@ -23,12 +23,21 @@ input{
     font-size: 30px;
     border-radius: 30px;
     padding: 10px;
+    background-color:#1E293B;
+    transition: 0.8s;
+    color: white;
 }
 
 label{
     font-size: 30px;
     font-weight: bold;
     font-family: monospace;
+}
+
+
+input:hover{
+    background-color: white;
+    color: black
 }
 
 .submitButton, a{
@@ -41,3 +50,4 @@ label{
 .requirements_text{
     grid-column: 2;
 }
+

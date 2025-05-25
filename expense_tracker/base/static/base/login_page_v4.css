@@ -20,6 +20,14 @@ input{
     font-size: 30px;
     border-radius: 30px;
     padding: 10px;
+    background-color:#1E293B;
+    transition: 0.8s;
+    color: white;
+}
+
+input:hover{
+    background-color: white;
+    color: black
 }
 
 label{
@@ -34,3 +42,4 @@ label{
     justify-self: center;
     align-self: center;
 }
+

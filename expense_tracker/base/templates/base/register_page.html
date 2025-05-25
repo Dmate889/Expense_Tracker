@@ -1,8 +1,8 @@
 {% extends 'base/base.html' %} {% load static %} {% block styles %}
-<link rel="stylesheet" href="{% static 'base/register_page_v4.css' %}" />
+<link rel="stylesheet" href="{% static 'base/register_page_v5.css' %}" />
 {% endblock styles %} {% block content %}
 
-<form method="POST">
+<form class="authPages" method="POST">
   {% if messages %}
   <ul class="messages">
     {% for message in messages %} {{message}} {% endfor %}
